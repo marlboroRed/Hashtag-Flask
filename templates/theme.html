@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>테마별 해시태그 생성기</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <div class="outer-wrapper">
+    <div class="container">
+
+      {% if not hashtags %}
+      <h1 class="title-auto-fit"> 테마별 해시태그 생성기</h1>
+      <form method="POST">
+        <div class="theme-box">
+          {% for theme in themes %}
+          <label>
+            <input type="checkbox" name="themes" value="{{ theme }}" {% if theme in selected_themes %}checked{% endif %}>
+            {{ theme }}
+          </label>
+          {% endfor %}
+        </div>
+        <button type="submit">해시태그 추천</button>
+      </form>
+      <button id="reward-ad-button">광고 보고 한번더!</button>
+      {% endif %}
+
+      {% if hashtags %}
+      <div class="result">
+        <h3>추천 해시태그</h3>
+        <div id="hashtag-list">
+          {% for tag in hashtags.split() %}
+            <label class="hashtag-item">
+              <input type="checkbox" class="tag-check" value="{{ tag }}">
+              {{ tag }}
+            </label>
+          {% endfor %}
+        </div>
+        <div class="copy-buttons">
+          <button onclick="copySelected()">선택된 항목 복사</button>
+          <button onclick="copyAll()">전체 복사</button>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if message %}
+      <p class="error">{{ message }}</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <a href="/" class="home-button" title="메인으로 돌아가기">
+    <img src="/static/home-icon.png" alt="홈으로" class="home-icon">
+  </a>
+  
+
+  <script>
+    function copySelected() {
+      const checks = document.querySelectorAll(".tag-check:checked");
+      const tags = Array.from(checks).map(el => el.value).join(" ");
+      if (tags) {
+        navigator.clipboard.writeText(tags).then(() => alert("선택된 해시태그 복사 완료!"));
+      } else {
+        alert("선택된 해시태그가 없습니다.");
+      }
+    }
+
+    function copyAll() {
+      const allTags = Array.from(document.querySelectorAll(".tag-check")).map(el => el.value).join(" ");
+      navigator.clipboard.writeText(allTags).then(() => alert("전체 복사 완료!"));
+    }
+  </script>
+<script src="/static/reward.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const errorBox = document.querySelector(".error");
+    if (errorBox) {
+      const btnContainer = document.createElement("div");
+      btnContainer.className = "error-buttons";
+
+      const dismissBtn = document.createElement("button");
+      dismissBtn.textContent = "확인";
+      dismissBtn.className = "error-dismiss";
+      dismissBtn.onclick = () => errorBox.style.display = "none";
+
+      const rewardBtn = document.createElement("button");
+      rewardBtn.textContent = "광고보고\n기회받기"; // 
+      rewardBtn.className = "reward-ad";
+      rewardBtn.onclick = () => {
+        fetch("/reward", { method: "POST" })
+          .then(res => res.json())
+          .then(data => {
+            alert(data.message);
+            errorBox.style.display = "none";
+          })
+          .catch(err => alert("오류 발생: " + err));
+      };
+
+      btnContainer.appendChild(dismissBtn);
+      btnContainer.appendChild(rewardBtn);
+      errorBox.appendChild(btnContainer);
+    }
+  });
+</script>
+
+
+</body>
+</html>

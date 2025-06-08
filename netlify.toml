@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "http://aikorea.ai.kr/*"
+  to = "https://www.aikorea.ai.kr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://aikorea.ai.kr/*"
+  to = "https://www.aikorea.ai.kr/:splat"
+  status = 301
+  force = true

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    
+  <meta charset="UTF-8">
+  <title>해시태그 생성기 메인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      width: 90%;
+      max-width: 500px;
+      min-height: 55vh;
+      background: rgb(255, 253, 250);
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .main-title-box {
+      background-image: url("/static/bg-main.jpg"); 
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-title-box h1 {
+      font-size: clamp(22px, 6vw, 28px);
+      margin: 0;
+    }
+
+    .main-container button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      background-color: #fc5757;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)); /* 선택사항: 그림자 효과 */
+    }
+
+    .main-container button:hover {
+      background-color: #fabbbb;
+    }
+
+    @media (max-width: 480px) {
+      .main-container button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="/static/logo.png" alt="Tag AI 로고" class="main-logo">  
+  <div class="main-container">
+
+    <div class="main-title-box">
+      <h1>해시태그 생성기</h1>
+    </div>
+    <button onclick="location.href='/theme'">테마별 해시태그 생성기</button>
+    <button onclick="location.href='/title'">AI 제목분석 해시태그 생성기</button>
+  </div>
+</body>
+</html>

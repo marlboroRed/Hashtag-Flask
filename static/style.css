@@ -1,0 +1,293 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('/static/bg-common.jpg');  /* 📸 공통 배경 이미지 */
+    background-size: cover;         /* 전체 채움 */
+    background-position: center bottom;    /* 정중앙 기준 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;   /* 스크롤 시 고정 배경 효과 */
+    min-height: 100vh;
+  }
+  
+  .outer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* ✅ 해상도에 따라 70% 높이 */
+  .container {
+    max-width: 500px;
+    width: 90%;
+    height: 70vh;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+  
+    /* ✅ 중앙 정렬 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .title-auto-fit {
+    font-size: clamp(18px, 5vw, 28px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+    text-align: center;  /* ✅ form 안 버튼 중앙 정렬 */
+  }
+  
+  textarea {
+    width: 100%;
+    height: 160px;
+    padding: 12px;
+    font-size: 14px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  textarea::placeholder {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .theme-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 12px;
+    margin-bottom: 20px;
+    justify-items: start;
+  }
+  
+  .theme-box label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  
+  button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #e24258;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    /* ✅ 중앙 정렬 보장 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  button:hover {
+    background-color: #f5acc2;
+  }
+  
+  .result {
+    margin-top: 30px;
+    background-color: #f5f5f5;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    word-break: break-word;
+  }
+  
+  .hashtag-item {
+    display: inline-block;
+    margin: 4px 6px;
+    padding: 6px 10px;
+    background: #e0f7fa;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .hashtag-item input {
+    margin-right: 6px;
+  }
+  
+  .error {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffecec;
+    padding: 20px 30px;
+    border: 1px solid #ff8080;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+  }
+  
+  .error-buttons {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .error-buttons button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: pre-line; /* ✅ 줄바꿈 허용 */
+  }
+  
+  .error-dismiss {
+    background-color: #ff8080;
+    color: white;
+  }
+  
+  .reward-ad {
+    background-color: #ff8080; /* ✅ 동일한 색상으로 통일 */
+    color: white;
+  }
+  
+  
+  
+  .home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+  }
+  
+  .home-button img.home-icon {
+    width: 28px;   /* 원하시는 크기로 조절 가능 */
+    height: auto;
+    display: block;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)); /* 선택사항: 그림자 효과 */
+    cursor: pointer;
+  }
+  
+  .container {
+    position: relative;  /* ✅ 추가 */
+    background-color: rgb(253, 250, 246);  /* ✅ 이 줄만 추가! */
+
+  }
+/* ✅ 해시태그 결과 박스 스타일 개선 */
+.result {
+    margin-top: 30px;
+    background-color: transparent;  /* 배경 제거 */
+    border: none;                   /* 테두리 제거 */
+    padding: 0;
+    border-radius: 0;
+    text-align: center;             /* 가운데 정렬 */
+  }
+  
+  .result h3 {
+    margin-bottom: 10px;
+  }
+  
+  /* ✅ 해시태그 목록 */
+  #hashtag-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;       /* 해시태그 가운데 정렬 */
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  /* ✅ 해시태그 태그 스타일 */
+  .hashtag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background-color: #e0f7fa;
+  }
+  
+  .hashtag-item input {
+    margin: 0;
+  }
+  
+  /* ✅ 선택된 항목 복사/전체 복사 버튼 정렬 */
+  .copy-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  
+  /* ✅ 페이지 스크롤 상단 여유 및 스무스 처리 */
+  html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  /* ✅ 화면 비율에 맞게 콘텐츠 중앙 배치 */
+  .outer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 10px;
+    box-sizing: border-box;
+  }
+  .main-title-box {
+    background-image: url("/static/bg-main.jpg");
+    background-size: auto 80%;           /* ✅ 세로(높이)를 100%에 맞추고 */
+    background-position: bottom center;   /* ✅ 항상 이미지 하단부터 표시 */
+    background-repeat: no-repeat;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  
+  
+  .main-title-box h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    margin: 0;
+  }
+  
+  /* ✅ 로고 이미지 스타일 */
+  .main-logo {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(130px, 35%, 300px);
+    height: auto;
+    z-index: 1000;
+  }
+  
+  

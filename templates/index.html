@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>해시태그 생성기 메인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    .menu-button {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      padding: 15px;
+      margin: 10px auto;
+      font-size: 16px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .menu-button:hover {
+      background-color: #0097a7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ 해시태그 생성기 ✨</h1>
+    <button class="menu-button" onclick="location.href='/theme'">🎨 테마별 해시태그 생성기</button>
+    <button class="menu-button" onclick="location.href='/title'">🧠 AI 제목분석 해시태그 생성기</button>
+  </div>
+</body>
+</html>

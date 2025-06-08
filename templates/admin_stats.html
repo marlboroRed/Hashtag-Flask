@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 통계</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: white;
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(20px, 5vw, 26px);
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 15px;
+      background-color: #00acc1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 API Requests (Last 24h / 30min)</h1>
+
+  <form method="POST" onsubmit="return confirm('정말로 모든 기록을 초기화하시겠습니까?');">
+    <input type="hidden" name="reset" value="1">
+    <button type="submit">🔁 Reset Limit Counts</button>
+  </form>
+
+  <img src="/static/traffic_chart.png?ts={{ now() }}" alt="트래픽 그래프">
+</body>
+</html>
