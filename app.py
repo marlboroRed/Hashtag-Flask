@@ -53,7 +53,7 @@ def check_limit(ip, menu):
 
     if row:
         count = row['count']
-        if count >= 3:
+        if count >= 1:
             return False
         else:
             db.execute(
