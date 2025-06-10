@@ -87,6 +87,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // ✅ 기존 오류박스 처리 (건드리지 않음)
     const errorBox = document.querySelector(".error");
     if (errorBox) {
       const btnContainer = document.createElement("div");
@@ -98,7 +99,7 @@
       dismissBtn.onclick = () => errorBox.style.display = "none";
 
       const rewardBtn = document.createElement("button");
-      rewardBtn.textContent = "광고보고\n기회받기"; 
+      rewardBtn.textContent = "광고보고\n기회받기";
       rewardBtn.className = "reward-ad";
       rewardBtn.onclick = () => {
         fetch("/reward", { method: "POST" })
@@ -114,8 +115,21 @@
       btnContainer.appendChild(rewardBtn);
       errorBox.appendChild(btnContainer);
     }
+
+    // ✅ ✅ ✅ WebView 광고 버튼 이벤트 연결 추가
+    const rewardAdButton = document.getElementById("reward-ad-button");
+    if (rewardAdButton) {
+      rewardAdButton.onclick = () => {
+        if (typeof AndroidAd !== "undefined" && AndroidAd.showRewardAd) {
+          AndroidAd.showRewardAd(); // ← Kotlin 연결 호출
+        } else {
+          alert("앱에서만 사용 가능한 기능입니다.");
+        }
+      };
+    }
   });
 </script>
+
 
 </body>
 </html>
