@@ -17,7 +17,7 @@
         <textarea name="content" id="titleInput" maxlength="30" placeholder="제목을 입력해보세요(30자 이내)">{{ content }}</textarea>
         <button type="submit">해시태그 추천</button>
       </form>
-      <button id="reward-ad-button">광고 보고 한번더!</button>
+      <button id="reward-ad-button">광고보고 다시 생성하기</button>
       {% endif %}
       
 
@@ -104,7 +104,7 @@
     if (rewardAdButton) {
       rewardAdButton.onclick = () => {
         if (typeof AndroidAd !== "undefined" && AndroidAd.showRewardAd) {
-          AndroidAd.showRewardAd(); // Kotlin 연결
+          AndroidAd.showRewardAd(); 
         } else {
           alert("앱에서만 사용 가능한 기능입니다.");
         }

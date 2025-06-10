@@ -12,7 +12,7 @@
     <div class="container">
 
       {% if not hashtags %}
-      <h1 class="title-auto-fit"> 테마별 해시태그 생성기</h1>
+      <h1 class="title-auto-fit">선택형 자동 해시태그 생성기</h1>
       <form method="POST">
         <div class="theme-box">
           {% for theme in themes %}
@@ -24,7 +24,7 @@
         </div>
         <button type="submit">해시태그 추천</button>
       </form>
-      <button id="reward-ad-button">광고 보고 한번더!</button>
+      <button id="reward-ad-button">광고보고 다시 생성하기</button>
       {% endif %}
 
       {% if hashtags %}
