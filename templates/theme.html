@@ -56,7 +56,6 @@
     <img src="/static/home-icon.png" alt="홈으로" class="home-icon">
   </a>
   
-
   <script>
     function copySelected() {
       const checks = document.querySelectorAll(".tag-check:checked");
@@ -74,34 +73,36 @@
     }
   </script>
 <script src="/static/reward.js"></script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // ✅ 기존 오류박스 처리 (건드리지 않음)
     const errorBox = document.querySelector(".error");
     if (errorBox) {
       const btnContainer = document.createElement("div");
       btnContainer.className = "error-buttons";
 
-      const dismissBtn = document.createElement("button");
+      const dismissBtn = document.createElement("button")
       dismissBtn.textContent = "확인";
       dismissBtn.className = "error-dismiss";
       dismissBtn.onclick = () => errorBox.style.display = "none";
-
-      const rewardBtn = document.createElement("button");
-      rewardBtn.textContent = "광고보고\n기회받기";
-      rewardBtn.className = "reward-ad";
-      rewardBtn.onclick = () => {
-        fetch("/reward", { method: "POST" })
-          .then(res => res.json())
-          .then(data => {
-            alert(data.message);
-            errorBox.style.display = "none";
-          })
-          .catch(err => alert("오류 발생: " + err));
-      };
-
       btnContainer.appendChild(dismissBtn);
-      btnContainer.appendChild(rewardBtn);
+
+      // if (messageType === "limit_reached") {
+      //   const rewardBtn = document.createElement("button");
+      //   rewardBtn.textContent = "광고보고\n기회받기";
+      //   rewardBtn.className = "reward-ad";
+      //   rewardBtn.onclick = () => {
+      //     fetch("/reward", { method: "POST" })
+      //       .then(res => res.json())
+      //       .then(data => {
+      //         alert(data.message);
+      //         errorBox.style.display = "none";
+      //       })
+      //       .catch(err => alert("오류 발생: " + err));
+      //   };
+      //   btnContainer.appendChild(rewardBtn);
+      // }
+
       errorBox.appendChild(btnContainer);
     }
 
@@ -117,8 +118,5 @@
     }
   });
 </script>
-
-
-
 </body>
 </html>
