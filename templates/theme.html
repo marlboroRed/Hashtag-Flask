@@ -12,7 +12,7 @@
     <div class="container">
 
       {% if not hashtags %}
-      <h1 class="title-auto-fit">선택형 자동 해시태그 생성기</h1>
+      <!-- 삭제된 제목 부분: <h1 class="title-auto-fit">선택형 자동 해시태그 생성기</h1> -->
       <form method="POST">
         <div class="theme-box">
           {% for theme in themes %}
@@ -86,22 +86,6 @@
       dismissBtn.className = "error-dismiss";
       dismissBtn.onclick = () => errorBox.style.display = "none";
       btnContainer.appendChild(dismissBtn);
-
-      // if (messageType === "limit_reached") {
-      //   const rewardBtn = document.createElement("button");
-      //   rewardBtn.textContent = "광고보고\n기회받기";
-      //   rewardBtn.className = "reward-ad";
-      //   rewardBtn.onclick = () => {
-      //     fetch("/reward", { method: "POST" })
-      //       .then(res => res.json())
-      //       .then(data => {
-      //         alert(data.message);
-      //         errorBox.style.display = "none";
-      //       })
-      //       .catch(err => alert("오류 발생: " + err));
-      //   };
-      //   btnContainer.appendChild(rewardBtn);
-      // }
 
       errorBox.appendChild(btnContainer);
     }
