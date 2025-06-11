@@ -177,18 +177,18 @@ body {
   
   
   .home-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
+  position: fixed; /* fixed로 바꿔서 스크롤에도 항상 보이게 */
+  top: calc(env(safe-area-inset-top, 0px) + 16px); /* 노치 대응 */
+  left: 16px;
+  z-index: 9999;
   }
   
   .home-button img.home-icon {
-    width: 28px;   /* 원하시는 크기로 조절 가능 */
-    height: auto;
-    display: block;
-    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)); /* 선택사항: 그림자 효과 */
-    cursor: pointer;
+  width: 28px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+  cursor: pointer;
   }
   
   .container {
