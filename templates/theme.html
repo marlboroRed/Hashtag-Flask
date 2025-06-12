@@ -93,14 +93,18 @@
     const rewardAdButton = document.getElementById("reward-ad-button");
     if (rewardAdButton) {
       rewardAdButton.onclick = () => {
+        console.log("🔍 HTML 버튼 클릭됨"); // ✅ 추가
         if (typeof AndroidAd !== "undefined" && AndroidAd.showRewardAd) {
+          console.log("📡 AndroidAd.showRewardAd 호출 시도"); // ✅ 추가
           AndroidAd.showRewardAd(); 
         } else {
+          console.log("❌ AndroidAd 또는 showRewardAd 없음"); // ✅ 추가
           alert("앱에서만 사용 가능한 기능입니다.");
         }
       };
     }
   });
 </script>
+
 </body>
 </html>
