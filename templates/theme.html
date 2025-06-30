@@ -12,6 +12,7 @@
     <div class="container">
 
       {% if not hashtags %}
+      <!-- 삭제된 제목 부분: <h1 class="title-auto-fit">선택형 자동 해시태그 생성기</h1> -->
       <form method="POST">
         <div class="theme-box">
           {% for theme in themes %}
@@ -22,10 +23,8 @@
           {% endfor %}
         </div>
         <button type="submit">해시태그 추천</button>
-
-        <!-- ✅ 앱 내부에서만 보이도록 버튼을 JS에서 삽입 -->
-        <div id="reward-container"></div>
       </form>
+      <button id="reward-ad-button">광고보고 다시 생성하기</button>
       {% endif %}
 
       {% if hashtags %}
@@ -53,12 +52,10 @@
     </div>
   </div>
 
-  <!-- 홈으로 이동 -->
   <a href="/" class="home-button" title="메인으로 돌아가기">
     <img src="/static/home-icon.png" alt="홈으로" class="home-icon">
   </a>
-
-  <!-- ✅ 해시태그 복사 함수 -->
+  
   <script>
     function copySelected() {
       const checks = document.querySelectorAll(".tag-check:checked");
@@ -75,40 +72,39 @@
       navigator.clipboard.writeText(allTags).then(() => alert("전체 복사 완료!"));
     }
   </script>
+<script src="/static/reward.js"></script>
 
-  <!-- ✅ 에러창 확인 버튼 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const errorBox = document.querySelector(".error");
-      if (errorBox) {
-        const btnContainer = document.createElement("div");
-        btnContainer.className = "error-buttons";
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const errorBox = document.querySelector(".error");
+    if (errorBox) {
+      const btnContainer = document.createElement("div");
+      btnContainer.className = "error-buttons";
 
-        const dismissBtn = document.createElement("button")
-        dismissBtn.textContent = "확인";
-        dismissBtn.className = "error-dismiss";
-        dismissBtn.onclick = () => errorBox.style.display = "none";
-        btnContainer.appendChild(dismissBtn);
+      const dismissBtn = document.createElement("button")
+      dismissBtn.textContent = "확인";
+      dismissBtn.className = "error-dismiss";
+      dismissBtn.onclick = () => errorBox.style.display = "none";
+      btnContainer.appendChild(dismissBtn);
 
-        errorBox.appendChild(btnContainer);
-      }
-    });
-  </script>
+      errorBox.appendChild(btnContainer);
+    }
 
-  <!-- ✅ AndroidAd에서만 버튼 보이게 -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (typeof AndroidAd !== "undefined" && AndroidAd.showRewardAd) {
-        const btn = document.createElement("button");
-        btn.id = "reward-ad-button";
-        btn.innerText = "광고보고 다시 생성하기";
-        btn.onclick = () => {
-          console.log("📡 AndroidAd.showRewardAd 호출 시도");
-          AndroidAd.showRewardAd();
-        };
-        document.getElementById("reward-container").appendChild(btn);
-      }
-    });
-  </script>
+    const rewardAdButton = document.getElementById("reward-ad-button");
+    if (rewardAdButton) {
+      rewardAdButton.onclick = () => {
+        console.log("🔍 HTML 버튼 클릭됨"); // ✅ 추가
+        if (typeof AndroidAd !== "undefined" && AndroidAd.showRewardAd) {
+          console.log("📡 AndroidAd.showRewardAd 호출 시도"); // ✅ 추가
+          AndroidAd.showRewardAd(); 
+        } else {
+          console.log("❌ AndroidAd 또는 showRewardAd 없음"); // ✅ 추가
+          alert("앱에서만 사용 가능한 기능입니다.");
+        }
+      };
+    }
+  });
+</script>
+
 </body>
 </html>
